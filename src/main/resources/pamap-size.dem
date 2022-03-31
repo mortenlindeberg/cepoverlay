@@ -1,0 +1,22 @@
+set terminal eps font "Times-New-Roman,14"
+set output 'pamap-size.eps'
+
+set style line 1 lt 1 lw 4 lc rgb '#0072bd' # blue
+set style line 2 lt 2 lw 4 lc rgb '#d95319' # orange
+set style line 3 lt 3 lw 4 lc rgb '#edb120' # yellow
+set style line 4 lt 4 lw 4 lc rgb '#7e2f8e' # purple
+set style line 5 lt 5 lw 4 lc rgb '#77ac30' # green
+set style line 6 lt 6 lw 4 lc rgb '#4dbeee' # light-blue
+set style line 7 lt 7 lw 4 lc rgb '#a2142f' # red
+
+set xlabel 'Future window F_w (0 = Reactive)'
+set ylabel 'Average Snapshot Size (kb)'
+
+set xrange [45:-5] reverse
+set xtics ("Reactive" 0, "10" 10, "20" 20, "30" 30, "40" 40)
+
+set arrow from 9, graph 0 to 9, graph 1 lw 1.5 lc "black" dt 2 nohead
+
+plot 'pamap-size.txt' using 1:2 with linespoints ls 1 title 'None', \
+     'pamap-size.txt' using 1:4 with linespoints ls 2 title 'Aware', \
+     'pamap-size.txt' using 1:6 with linespoints ls 3 title 'Wait'

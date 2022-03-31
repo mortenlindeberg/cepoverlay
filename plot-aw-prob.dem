@@ -1,0 +1,22 @@
+set term eps
+set output "plot-aw-prob.eps"
+
+set multiplot layout 2,1
+
+pt(x)= x / (ws*1000)
+set yrange [0:1]
+set xrange [0:6000]
+set title 'Probability of a delayed tuple'
+set xlabel 'Migration time in seconds'
+set ylabel 'Probability'
+plot ws=1,pt(x) title 'Ws = 1',ws=10,pt(x) title 'Ws = 10',ws=60,pt(x) title 'Ws = 60'
+
+
+gt(x)=x / (1/r)
+set title 'Probability of a delayed tuple'
+set xlabel 'Migration time in seconds'
+set ylabel 'Probability'
+set xrange [0:1]
+plot r=0.1,gt(x) title 'R=0.1 t/s',r=0.2,gt(x) title 'R=0.2 t/s',r=0.5,gt(x) title 'R=0.5 t/s',r=1,gt(x) title 'R=1 t/s'
+
+unset multiplot

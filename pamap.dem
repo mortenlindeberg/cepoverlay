@@ -1,0 +1,22 @@
+set terminal eps font "Helvetica,8"
+set output 'pamap.eps'
+set datafile missing "NaN"
+
+f(x)=32
+set xrange [0:4000]
+set yrange [30:38]
+unset ytics
+set multiplot layout 8,1
+
+plot "PAMAPData/stream1.dat" using 1:4 with lines title "Stream 1" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream2.dat" using 1:4 with lines title "Stream 2" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream3.dat" using 1:4 with lines title "Stream 3" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream4.dat" using 1:4 with lines title "Stream 4" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream5.dat" using 1:4 with lines title "Stream 5" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream6.dat" using 1:4 with lines title "Stream 6" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream7.dat" using 1:4 with lines title "Stream 7" linestyle 1, f(x) title "LIMIT"
+plot "PAMAPData/stream8.dat" using 1:4 with lines title "Stream 8" linestyle 1, f(x) title "LIMIT"
+
+unset multiplot
+
+

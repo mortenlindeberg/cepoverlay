@@ -1,0 +1,44 @@
+set terminal eps font "Helvetica,8"
+set output 'plot-experiment.eps'
+
+set style line 1 pointtype 7 pointsize 0.4 lc "red"
+set style line 2 pointtype 7 pointsize 0.4 lc "blue"
+set style line 3 pointtype 7 pointsize 0.4 lc "dark-green"
+
+K = "`cat start.res`"
+K=K+0  #Cast K to a floating point number
+
+
+set multiplot
+
+set size 1,0.25
+set origin 0.0,0.75
+
+plot "output.res" using 1:4 with linespoints title "load" linestyle 1, \
+     "original.res" using 2:3 with lines title "Fasit" linestyle 2
+
+set origin 0.0,0.50
+
+set yrange [0:6]
+plot "output.res" using 1:($1-$2) with linespoints title "Delay" linestyle 3
+
+set origin 0.0,0.25
+
+set yrange [0:100]
+
+load "arrows.gp"
+
+plot "adapt.res" using 1:2 with lines title "Real Temperature" linestyle 1, \
+     "adapt.res" using 1:3 with lines title "Predicted Temperature" linestyle 2, 25 title 'Limit' linestyle 3
+
+set origin 0.0,0.0
+
+set yrange [0:180]
+
+load "arrows.gp"
+
+plot "rate.res" using 1:2 with linespoints title "Perceived Rate" linestyle 1, \
+    "adapt.res" using 1:5 with linespoints title "Calculated Rate" linestyle 2, \
+    "frate.res" using 1:2 with linespoints title "Actual Send Rate" linestyle 3
+
+unset multiplot

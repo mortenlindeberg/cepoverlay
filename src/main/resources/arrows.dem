@@ -1,0 +1,14 @@
+set terminal eps
+set output 'arrows.eps'
+
+set xrange [0:120]
+set yrange [0:180]
+
+K = "`cat start.res`"
+K=K+0  #Cast K to a floating point number
+
+load "arrows.gp"
+
+plot "rate.txt" using ($1-K):2 with lines title "Real Rate" linestyle 1, \
+    "adapt.txt" using ($1-K):5 with lines title "Real Rate" linestyle 2, \
+    "frate.txt" using ($1-K):2 with lines title "Fasit Rate" linestyle 3

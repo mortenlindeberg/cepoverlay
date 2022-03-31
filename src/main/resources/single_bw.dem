@@ -1,0 +1,10 @@
+set terminal eps font "Helvetica,8"
+set output 'single_bw.eps'
+
+set logscale y
+
+plot 'exp_zero_bw.res' using 1:2 with lines title 'Zero', \
+     'exp_one_bw.res' using 1:2 with lines title 'One', \
+     'exp_two_bw.res' using 1:2 with lines title 'Two', \
+     'exp_three_bw.res' using 1:2 with lines title 'Three', \
+     'exp_four_bw.res' using 1:2 with lines title 'Four'

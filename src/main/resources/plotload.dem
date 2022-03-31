@@ -1,0 +1,34 @@
+
+
+set terminal eps font "Helvetica,8"
+set output 'plot-load.eps'
+
+set style line 1 pointtype 7 pointsize 0.4 lc "red"
+set style line 2 pointtype 7 pointsize 0.4 lc "blue"
+set style line 3 pointtype 7 pointsize 0.4 lc "dark-green"
+
+set xlabel "Date"
+set timefmt "%s"
+set format x "%m/%d/%Y"
+set xdata time
+
+set multiplot
+
+set size 1,0.25
+set origin 0.0,0.75
+#smooth sbezier with lines
+plot "../../../output.res" using ($2/1000):4 title "Load" linestyle 1, 58000 title "Limit"
+
+set origin 0.0,0.50
+plot "../../../output.res" using ($2/1000):5 title "Temp" linestyle 3, 20 title "Limit"
+
+set origin 0.0,0.25
+plot "../../../output.res" using ($2/1000):6  title "Hum" linestyle 3
+
+
+set origin 0.0,0.0
+
+plot "../../../output.res" using ($2/1000):($4) smooth sbezier with lines title "Load" linestyle 1, \
+     "../../../output.res" using ($2/1000):($5) smooth sbezier with lines title "Temp" linestyle 2
+unset multiplot
+

@@ -1,0 +1,17 @@
+set terminal eps font "Times-New-Roman,12"
+set output 'pamap-score.eps'
+
+set style line 1 lt 1 lw 4 lc rgb '#0072bd' # blue
+set style line 2 lt 2 lw 4 lc rgb '#d95319' # orange
+set style line 3 lt 3 lw 4 lc rgb '#edb120' # yellow
+set style line 4 lt 4 lw 4 lc rgb '#7e2f8e' # purple
+set style line 5 lt 5 lw 4 lc rgb '#77ac30' # green
+set style line 6 lt 6 lw 4 lc rgb '#4dbeee' # light-blue
+set style line 7 lt 7 lw 4 lc rgb '#a2142f' # red
+
+set xlabel 'Future Window (F_w = 0 is Reactive)'
+set ylabel 'Score'
+
+plot 'pamap-score.txt' using 1:2 with linespoints ls 1 title 'None', \
+     'pamap-score.txt' using 1:4 with linespoints ls 2 title 'Aware', \
+     'pamap-score.txt' using 1:6 with linespoints ls 3 title 'Wait'

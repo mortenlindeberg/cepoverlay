@@ -1,0 +1,11 @@
+set terminal eps font "Helvetica,8"
+set output 'pamap.eps'
+set datafile missing "NaN"
+plot "../../../PAMAPData/stream1.dat" using 1:3 with lines title "Stream 1", \
+     "../../../PAMAPData/stream2.dat" using 1:3 with lines title "Stream 2", \
+     "../../../PAMAPData/stream3.dat" using 1:3 with lines title "Stream 3", \
+     "../../../PAMAPData/stream4.dat" using 1:3 with lines title "Stream 4", \
+     "../../../PAMAPData/stream5.dat" using 1:3 with lines title "Stream 5", \
+     "../../../PAMAPData/stream6.dat" using 1:3 with lines title "Stream 6", \
+     "../../../PAMAPData/stream7.dat" using 1:3 with lines title "Stream 7", \
+     "../../../PAMAPData/stream8.dat" using 1:3 with lines title "Stream 8"
